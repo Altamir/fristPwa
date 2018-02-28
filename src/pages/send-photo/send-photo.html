@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center class="oleo-script">
+      Tirar Foto
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auto-scroll">
+  <ion-card>
+    <ion-slides>
+      <ion-slide text-center>
+        <img src="http://lorempixel.com/512/512/" alt="" class="inkwel" style="width: 100%">
+        <small>inkwel</small>
+      </ion-slide>
+
+      <ion-slide text-center>
+        <img src="http://lorempixel.com/512/512/" alt="" class="aden" style="width: 100%">
+        <small>aden</small>
+      </ion-slide>
+
+      <ion-slide text-center>
+        <img src="http://lorempixel.com/512/512/" alt="" class="valencia" style="width: 100%">
+        <small>valencia</small>
+      </ion-slide>
+
+      <ion-slide text-center>
+        <img src="http://lorempixel.com/512/512/" alt="" class="1977" style="width: 100%">
+        <small>1977</small>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      
+        <ion-list no-lines>
+          <ion-item>
+            <ion-input type="text" placeholder="Título" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea placeholder="Mensagem" rows="3" ></ion-textarea>
+          </ion-item>
+        </ion-list>
+      
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start >Localizacao</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <div padding>
+    <button ion-button block large outline>Enviar</button>
+  </div>
+
+</ion-content>
