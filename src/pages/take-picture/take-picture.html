@@ -1,24 +1,30 @@
 <ion-header>
-        <ion-toolbar>
-          <ion-title text-center class="oleo-script">
-            Tirar Foto
-          </ion-title>
-          <ion-buttons end>
-            <button ion-button icon-only (click)="dismiss()">
-              <ion-icon name="close"></ion-icon>
-            </button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
+  <ion-toolbar>
+    <ion-title text-center class="oleo-script">
+      Tirar Foto
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="auto-scroll">
-    <ion-card>
-        <video id="video" width="100%" autoplay></video>
-        <canvas id="canvas" style="display:none;"></canvas>
-    </ion-card>    
-    <div padding>
-        <button ion-button block large outline (click)="takePicture()">
-            Tirar Foto
-        </button>
-    </div>
+  <ion-card>
+    <video id="video" width="100%" autoplay></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <ion-card-content>
+      <ion-card-title id="card_video">
+        Ops, camera nao suportada.
+      </ion-card-title>
+    </ion-card-content>
+
+  </ion-card>
+  <div padding>
+    <button id="bt_video" ion-button block large outline (click)="takePicture()">
+      Tirar Foto
+    </button>
+  </div>
 </ion-content>
