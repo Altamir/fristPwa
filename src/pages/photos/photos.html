@@ -1,24 +1,27 @@
 <ion-content class="auto-scroll">
   <ion-grid fixed>
     <ion-row align-itens-center justify-content-center>
-      <ion-col col-12 col-sm-12 col-md-5>
+      <ion-col col-12 col-sm-12 col-md-4 *ngFor="let photo of photos" class="animated zoomIn" >
 
         <ion-card>
-          <img src="http://lorempixel.com/g/512/512/" alt="">
+          <img src="{{ photo.image }}" alt="{{ photo.title }}" class="{{ photo.filter }}">
           <ion-card-content>
-            <ion-card-title>Titulo da foto</ion-card-title>
-            <p>Mensagem da imagem</p>
+            <ion-card-title>{{ photo.title }}</ion-card-title>
+            <p>{{ photo.menssage }}</p>
             <p>
-              <small>Postado em 29/07/2017 19:25 por
-                <strong>Altamir Benkensteim</strong>
+              <small>Postado em {{ photo.date | date: 'dd/MM/yyyy HH:mm' }} por
+                <strong>{{ photo.user }}</strong>
               </small>
             </p>
           </ion-card-content>
           <ion-row no-padding>
             <ion-col>
-              <button ion-button clear small color="danger" icon-start>
-                <ion-icon name="pin"></ion-icon>Ver no mapa
-              </button>
+                <button ion-button clear small color="danger" icon-start *ngIf="location != ''" (click)="showMap(photo.location)">
+                    <ion-icon name="pin"></ion-icon>Ver no mapa
+                </button>
+                <button ion-button clear small color="danger" icon-start *ngIf="location == ''">
+                    <ion-icon name="pin"></ion-icon>Localização não disponivel
+                </button> 
             </ion-col>
           </ion-row>
         </ion-card>

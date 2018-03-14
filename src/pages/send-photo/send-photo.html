@@ -13,51 +13,40 @@
 
 <ion-content class="auto-scroll">
   <ion-card>
-    <ion-slides>
-      <ion-slide text-center>
-        <img src="http://lorempixel.com/512/512/" alt="" class="inkwel" style="width: 100%">
-        <small>inkwel</small>
-      </ion-slide>
-
-      <ion-slide text-center>
-        <img src="http://lorempixel.com/512/512/" alt="" class="aden" style="width: 100%">
-        <small>aden</small>
-      </ion-slide>
-
-      <ion-slide text-center>
-        <img src="http://lorempixel.com/512/512/" alt="" class="valencia" style="width: 100%">
-        <small>valencia</small>
-      </ion-slide>
-
-      <ion-slide text-center>
-        <img src="http://lorempixel.com/512/512/" alt="" class="1977" style="width: 100%">
-        <small>1977</small>
+    <ion-slides (ionSlideDidChangee)="changeFilter()">
+      <ion-slide *ngFor="let filter of filters" text-center>
+        <img src="{{ photo }}" alt="" class="{{ filter }}" style="width: 100%">
+        <small>{{ filter }}</small>
       </ion-slide>
     </ion-slides>
 
     <ion-card-content>
-      
+      <form [formGroup]="form">
+
         <ion-list no-lines>
           <ion-item>
-            <ion-input type="text" placeholder="Título" ></ion-input>
+            <ion-input type="text" placeholder="Título" maxlength="40" formControlName="title"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-textarea placeholder="Mensagem" rows="3" ></ion-textarea>
+            <ion-textarea placeholder="Mensagem" rows="3" maxlength="255"  formControlName="menssage"></ion-textarea>
           </ion-item>
         </ion-list>
-      
+
+      </form>
+
     </ion-card-content>
 
     <ion-row no-padding>
       <ion-col>
-        <button ion-button clear small color="danger" icon-start >Localizacao</button>
+        <button ion-button clear small color="danger" icon-start *ngIf="location == ''" (click)="getLocation()">Ativar Localização</button>
+        <button ion-button clear small color="danger" icon-start *ngIf="location != ''">{{location}}</button>
       </ion-col>
     </ion-row>
 
   </ion-card>
 
   <div padding>
-    <button ion-button block large outline>Enviar</button>
+    <button ion-button block large outline [disabled]="!form.valid" (click)="submit()">Enviar</button>
   </div>
 
 </ion-content>
